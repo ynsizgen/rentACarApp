@@ -1,15 +1,14 @@
 package com.project.rentACar.business.response;
 
-import com.project.rentACar.enums.EnumVehicleType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class GetAllBrandsResponse {
-    private String id;
+@NoArgsConstructor
+public class GetAllModelsResponse {
+    private int id;
     private String name;
+    private String brandName;
 }

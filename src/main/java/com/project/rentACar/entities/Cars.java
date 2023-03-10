@@ -17,7 +17,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Car {
+public class Cars {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name ="UUID",strategy = "org.hibernate.id.UUIDGenerator")
@@ -43,7 +43,7 @@ public class Car {
 
     @ManyToOne
     @JoinColumn(name = "model_id")
-    private Model model;
+    private Models models;
 
 
 

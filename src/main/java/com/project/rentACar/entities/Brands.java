@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Brand {
+public class Brands {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name ="UUID",strategy = "org.hibernate.id.UUIDGenerator")
@@ -26,6 +26,6 @@ public class Brand {
     @Column(length = 50, nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "brand")
-    private List<Model> models;
+    @OneToMany(mappedBy = "brands")
+    private List<Models> models;
 }
