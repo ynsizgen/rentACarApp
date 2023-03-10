@@ -1,6 +1,6 @@
 package com.project.rentACar.enums;
 
-public enum VehicleType {
+public enum EnumVehicleType {
     SEDAN,
     COUPE,
     SPORTS_CAR,

@@ -1,5 +1,6 @@
 package com.project.rentACar.entities;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,23 +10,25 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.List;
 
-
-@Table(name="brand")
+@Table(name="model")
 //@Data
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Brand {
+public class Model {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name ="UUID",strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "id")
     private String id;
     @Column(length = 50, nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "brand")
-    private List<Model> models;
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
+
+    @OneToMany(mappedBy = "model")
+    private List<Car> cars;
 }
