@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateBrandRequest {
-    private String id;
+    private Long id;
 
     @NotNull(message = "İsim girilmedi")
     @NotEmpty

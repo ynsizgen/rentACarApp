@@ -22,7 +22,7 @@ public class Brands {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name ="UUID",strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id")
-    private String id;
+    private Long id;
     @Column(length = 50, nullable = false)
     private String name;
 

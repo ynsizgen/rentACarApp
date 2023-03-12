@@ -5,7 +5,6 @@ import com.project.rentACar.business.request.CreateBrandRequest;
 import com.project.rentACar.business.request.UpdateBrandRequest;
 import com.project.rentACar.business.response.GetAllBrandsResponse;
 import com.project.rentACar.business.response.GetByIdBrandResponse;
-import com.project.rentACar.webApi.Exceptions.BrandNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +26,7 @@ public class BrandController {
     }
 
     @GetMapping("/getById/{id}")
-    public ResponseEntity<GetByIdBrandResponse> getById(@PathVariable String id){
+    public ResponseEntity<GetByIdBrandResponse> getById(@PathVariable Long id){
         return new ResponseEntity<>(this.brandService.getById(id),OK);
     }
 
@@ -37,7 +36,7 @@ public class BrandController {
     }
 
     @DeleteMapping("/deleteBrand/{id}")
-    public ResponseEntity<Boolean> delete(@PathVariable String id){
+    public ResponseEntity<Boolean> delete(@PathVariable Long id){
        return new ResponseEntity<>(this.brandService.delete(id), OK);
     }
 
@@ -45,12 +44,5 @@ public class BrandController {
     public ResponseEntity<Boolean> update(@RequestBody UpdateBrandRequest updateBrandRequest){
         return new ResponseEntity<>(this.brandService.update(updateBrandRequest), OK);
     }
-
-    @ExceptionHandler(BrandNotFoundException.class)
-    public ResponseEntity<String> handleBrandNotFoundException(BrandNotFoundException ex){
-        return new ResponseEntity<>(ex.getMessage(), NOT_FOUND);
-    }
-
-
 
 }

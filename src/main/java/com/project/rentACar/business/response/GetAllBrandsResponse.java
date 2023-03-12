@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GetAllBrandsResponse {
-    private String id;
+    private Long id;
     private String name;
 }

@@ -4,6 +4,7 @@ import com.project.rentACar.business.request.CreateBrandRequest;
 import com.project.rentACar.business.request.UpdateBrandRequest;
 import com.project.rentACar.business.response.GetAllBrandsResponse;
 import com.project.rentACar.business.response.GetByIdBrandResponse;
+import com.project.rentACar.business.roles.BrandBusinessRoles;
 import com.project.rentACar.core.utilities.mappers.ModelMapperService;
 import com.project.rentACar.entities.Brands;
 import com.project.rentACar.business.abstracts.BrandService;
@@ -21,6 +22,8 @@ public class BrandManager implements BrandService {
     private BrandRepository brandRepository;
     private ModelMapperService modelMapperService;
 
+    private BrandBusinessRoles brandBusinessRoles;
+
     @Override
     public List<GetAllBrandsResponse> getAll() {
         List<Brands> brands = this.brandRepository.findAll();
@@ -32,20 +35,23 @@ public class BrandManager implements BrandService {
 
     @Override
     public boolean add(CreateBrandRequest createBrandRequest) {
+
+        this.brandBusinessRoles.checkIfBrandNameExists(createBrandRequest.getName());
+
         Brands brands = modelMapperService.forRequest().map(createBrandRequest, Brands.class);
         this.brandRepository.save(brands);
         return true;
     }
 
     @Override
-    public GetByIdBrandResponse getById(String id) {
+    public GetByIdBrandResponse getById(Long id) {
         Brands brands = this.brandRepository.getById(id);
         GetByIdBrandResponse response = this.modelMapperService.forResponse().map(brands, GetByIdBrandResponse.class);
         return response;
     }
 
     @Override
-    public boolean delete(String id) {
+    public boolean delete(Long id) {
         this.brandRepository.delete(this.brandRepository.getById(id));
         return true;
     }

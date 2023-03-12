@@ -21,7 +21,7 @@ public class Cars {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name ="UUID",strategy = "org.hibernate.id.UUIDGenerator")
-    private String id;
+    private Long id;
     @Column(length = 50, nullable = false)
     private String name;
     @Column(name = "state")
