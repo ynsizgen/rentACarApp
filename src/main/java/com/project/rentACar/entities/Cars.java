@@ -19,8 +19,8 @@ import java.util.Date;
 @Entity
 public class Cars {
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name ="UUID",strategy = "org.hibernate.id.UUIDGenerator")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
     @Column(length = 50, nullable = false)
     private String name;

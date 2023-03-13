@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.*;
@@ -31,7 +32,7 @@ public class BrandController {
     }
 
     @PostMapping("/addBrand")
-    public ResponseEntity<Boolean> add(@RequestBody CreateBrandRequest createBrandRequest){
+    public ResponseEntity<Boolean> add(@RequestBody @Valid CreateBrandRequest createBrandRequest){
        return new ResponseEntity<>(this.brandService.add(createBrandRequest), CREATED);
     }
 
